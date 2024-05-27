@@ -5,7 +5,7 @@ coverImage: "/assets/blog/best-guns-in-codm/cover.jpg"
 date: "2024-05-28T05:35:07.322Z"
 author:
   name: Calvin
-  picture: "/assets/blog/authors/calvin.jpeg"
+  picture: "/assets/blog/authors/Calvin.jpeg"
 ogImage:
   url: "/assets/blog/best-guns-in-codm/cover.jpg"
 ---
