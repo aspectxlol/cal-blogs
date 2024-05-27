@@ -2,7 +2,7 @@
 title: "Best Guns in CODM "
 excerpt: "Here are the Top 10 Best Guns in Call Of Duty Mobile"
 coverImage: "/assets/blog/best-guns-in-codm/cover.jpg"
-date: "2020-03-16T05:35:07.322Z"
+date: "2024-05-28T05:35:07.322Z"
 author:
   name: Calvin
   picture: "/assets/blog/authors/calvin.jpeg"
