@@ -16,6 +16,7 @@ export default function Index() {
     <main>
       <Container>
         <Intro />
+        
         <HeroPost
           title={heroPost.title}
           coverImage={heroPost.coverImage}
@@ -24,7 +25,6 @@ export default function Index() {
           slug={heroPost.slug}
           excerpt={heroPost.excerpt}
         />
-        
         {morePosts.length > 0 && <MoreStories posts={morePosts} />}
       </Container>
     </main>
