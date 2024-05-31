@@ -49,10 +49,11 @@ export function generateMetadata({ params }: Params): Metadata {
     return notFound();
   }
 
-  const title = `${post.title} | Cal-Blogs`;
+  const title = `${post.title} | CaL-Blogs`;
 
   return {
     title,
+    description: post.excerpt,
     openGraph: {
       title,
       images: [post.ogImage.url],
