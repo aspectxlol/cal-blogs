@@ -5,7 +5,7 @@ coverImage: "/assets/blog/javascript-basics/cover.jpeg"
 date: "2024-06-01T05:35:07.322Z"
 author:
   name: Louie
-  picture: "/assets/blog/authors/louie.jpeg"
+  picture: "/assets/blog/authors/Louie.jpeg"
 ogImage:
   url: "/assets/blog/best-guns-in-codm/cover.jpeg"
 ---
