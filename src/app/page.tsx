@@ -15,8 +15,10 @@ export default function Index() {
   return (
     <main>
       <Container>
-        <Intro />
-        
+        <div className="background flex">
+          <Intro />
+        </div>      
+        <div className="mx-auto px-5 mt-5">
         <HeroPost
           title={heroPost.title}
           coverImage={heroPost.coverImage}
@@ -26,6 +28,7 @@ export default function Index() {
           excerpt={heroPost.excerpt}
         />
         {morePosts.length > 0 && <MoreStories posts={morePosts} />}
+        </div>
       </Container>
     </main>
   );

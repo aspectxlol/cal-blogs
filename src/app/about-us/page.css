@@ -1,0 +1,18 @@
+.background {
+  position: absolute;
+  /* height: 100vh; */
+  /* margin: 0; */
+  background: linear-gradient(
+    180deg, 
+    #1A1E35 0%, 
+    #372C4B 50%, 
+    #74404F 100%);
+}
+
+.circle {
+  position: absolute;
+  border-radius: 50%;
+  background-color: white;
+  filter: blur(1px);
+  box-shadow: 0px 0px 10px 0px #FFF;
+}

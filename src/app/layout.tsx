@@ -5,6 +5,7 @@ import { Inter } from "next/font/google";
 import 'bootstrap/dist/css/bootstrap.min.css'
 
 import "./globals.css";
+import AnimatedCircles from "./_components/Sky";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -56,9 +57,11 @@ export default function RootLayout({
         <meta name="theme-color" content="#000" />
         <link rel="alternate" type="application/rss+xml" href="/feed.xml" />
       </head>
+
       <body className={inter.className}>
-        <div className="min-h-screen">{children}</div>
-        <Footer />
+          <div className="min-h-screen">
+            {children}
+          </div>
       </body>
     </html>
   );
