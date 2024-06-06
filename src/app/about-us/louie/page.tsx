@@ -1,6 +1,7 @@
 "use client"
 
 import Stats from "@/app/_components/stats";
+import { Repo } from "@/interfaces/Repo";
 import Link from "next/link";
 import { useState, useEffect } from "react";
 interface Circle {
@@ -14,6 +15,48 @@ interface Circle {
 
 export default function Page() {
   const [circles, setCircles] = useState<Circle[]>([]);
+  const [repos, setRepos] = useState<Repo[]>([]);
+
+
+  useEffect(() => {
+    const fetchRepos = async () => {
+      try {
+        const response = await fetch('https://api.github.com/users/aspectxlol/repos', {
+          cache: 'force-cache', // Consider caching strategies for performance optimization
+        });
+
+        if (!response.ok) {
+          throw new Error(`Error fetching GitHub repos: ${response.statusText}`);
+        }
+
+        const data: Repo[] = await response.json();
+        const sortedRepos = data.sort((a, b) => b.stargazers_count - a.stargazers_count);
+        setRepos(sortedRepos);
+      } catch (error) {
+        console.error('Error fetching GitHub repos:', error);
+        // Handle errors gracefully, e.g., display an error message to the user
+      }
+    };
+
+    fetchRepos();
+  }, []);
+
+  const NonCoding: {
+    title: string,
+    description: string,
+    link?: string
+  }[] = [
+    {
+      title: 'Foodiez',
+      description: 'a p5 project, where we sell food and drinks',
+      link: 'https://bwsite.vercel.app/foodiez'
+    },
+    {
+      title: 'Suara Demokrasi',
+      description: 'a p5 project, where we make a short film',
+      link: 'https://drive.google.com/drive/u/0/folders/1WASOS-ILjOkQRFb1UJacXCei_jXPtRdM'
+    }
+  ]
 
   useEffect(() => {
     const createCircle = (): Circle => {
@@ -110,8 +153,32 @@ export default function Page() {
           </div>        
         </div>
       </section>
-      <section>
-
+      <section className="w-full h-dvh p-20">
+        <div className="my-4 text-center md:text-left">
+        <h1 className="text-2xl font-bold">Projects</h1>
+        <div className="gap-4 flex flex-col sm:flex-row">
+          {repos.filter((v, i) => i < 3).map((v: Repo) => 
+            <div key={v.id} className="border-2 rounded p-2 w-64 h-48">
+              <h1 className=" font-bold">{v.name}</h1>
+              <p className="my-4">{v.description}</p>
+              <Link href={v.html_url} className="border rounded hover:bg-green-800 hover:text-white p-2">Learn More</Link>
+            </div>
+          )}
+        </div>
+      </div>
+      <div className="my-4 text-center md:text-left">
+        <h1 className="text-2xl font-bold">Non-Coding Projects</h1>
+        <div className="gap-4 flex flex-col sm:flex-row">
+          {NonCoding.filter((v, i) => i < 3).map((v) => 
+            <div key={v.title} className="border-2 rounded p-2 w-64 h-48">
+              <h1 className=" font-bold">{v.title}</h1>
+              <p className="my-4">{v.description}</p>
+              {/* <Link href={v.html_url} className="border rounded hover:bg-green-800 hover:text-white p-2">Learn More</Link> */}
+              {v.link? <Link href={v.link!} className="border rounded hover:bg-green-800 hover:text-white p-2">Learn More</Link> : <></>}
+            </div>
+          )}
+        </div>
+      </div>
       </section>
     </div>
   )
