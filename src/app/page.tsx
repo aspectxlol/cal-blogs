@@ -18,17 +18,19 @@ export default function Index() {
         <div className="background flex">
           <Intro />
         </div>      
-        <div className="mx-auto px-5 mt-5">
-        <HeroPost
-          title={heroPost.title}
-          coverImage={heroPost.coverImage}
-          date={heroPost.date}
-          author={heroPost.author}
-          slug={heroPost.slug}
-          excerpt={heroPost.excerpt}
-        />
-        {morePosts.length > 0 && <MoreStories posts={morePosts} />}
-        </div>
+        <section className="mx-auto p-32 mt-5 h-dvh">
+          <div className="max-w-screen-2xl">
+            <HeroPost
+              title={heroPost.title}
+              coverImage={heroPost.coverImage}
+              date={heroPost.date}
+              author={heroPost.author}
+              slug={heroPost.slug}
+              excerpt={heroPost.excerpt}
+            />
+          </div>
+          {morePosts.length > 0 && <MoreStories posts={morePosts} />}
+        </section>
       </Container>
     </main>
   );
