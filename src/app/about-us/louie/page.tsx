@@ -1,101 +1,118 @@
-"use server"
+"use client"
+
 import Stats from "@/app/_components/stats";
-import { Repo } from "@/interfaces/Repo";
 import Link from "next/link";
+import { useState, useEffect } from "react";
+interface Circle {
+  size: number;
+  left: number;
+  top: number;
+  opacity: number;
+  transitionTime: number;
+  intervalId?: NodeJS.Timeout; // Optional property for interval ID
+}
 
-export default async function Louie() {
-  const githubRepos:Repo[] = await (await fetch('https://api.github.com/users/aspectxlol/repos', { cache: 'force-cache' })).json()
-  // console.log(githubRepos)
-  githubRepos.sort((a, b) => b.stargazers_count - a.stargazers_count)
+export default function Page() {
+  const [circles, setCircles] = useState<Circle[]>([]);
 
-  const NonCoding: {
-    title: string,
-    description: string,
-    link?: string
-  }[] = [
-    {
-      title: 'Foodiez',
-      description: 'a p5 project, where we sell food and drinks',
-      link: 'https://bwsite.vercel.app/foodiez'
-    },
-    {
-      title: 'Suara Demokrasi',
-      description: 'a p5 project, where we make a short film',
-      link: 'https://drive.google.com/drive/u/0/folders/1WASOS-ILjOkQRFb1UJacXCei_jXPtRdM'
-    }
-  ]
+  useEffect(() => {
+    const createCircle = (): Circle => {
+      const size = Math.random() * 3 + 1; // Range: 1px to 4px
+      const left = Math.random() * (window.innerWidth - size * 2);
+      const top = Math.random() * (window.innerHeight - size * 2);
+      const opacity = Math.random() < 0.5 ? 0.1 : 1;
+      const transitionTime = Math.random() * 0.5 + 0.25; // Range: 0.25s to 075s
+
+      return {
+        size,
+        left,
+        top,
+        opacity,
+        transitionTime,
+      };
+    };
+    // Calculate target number of circles based on area
+    const density = 10; // Adjust this value to control circle density
+    const targetNumberOfCircles = Math.floor(
+      (window.innerWidth * window.innerHeight) / (density * 1000)
+    );
+
+    const newCircles = Array(targetNumberOfCircles).fill(null).map(createCircle);
+    setCircles(newCircles);
+
+    // Window resize listener
+    const handleResize = () => {
+      // Calculate target number of circles based on new window size
+      const density = 10; // Adjust this value to control circle density
+      const targetNumberOfCircles = Math.floor(
+        (window.innerWidth * window.innerHeight) / (density * 1000)
+      );
+
+      // Create new circles or update existing ones if needed
+      if (circles.length !== targetNumberOfCircles) {
+        const newCircles = Array(targetNumberOfCircles).fill(null).map(createCircle);
+        setCircles(newCircles);
+      }
+    };
+    window.addEventListener('resize', handleResize);
+
+    // Clean up intervals and resize listener when the component unmounts
+    return () => {
+      circles.forEach((circle) => clearInterval(circle.intervalId));
+      window.removeEventListener('resize', handleResize);
+    };
+  }, []);
+
   return (
-    <div className="md:p-5 p-2">
-      <div id="profile">
-        <h1 className="text-6xl font-bold text-center">Louie</h1>  
-      </div>    
-      <div className="flex sm:flex-row flex-col gap-4">
-        <Stats data={{
-          "Coding": 95,
-          "Math": 99,
-          "Charizzma": 150,
-        }}/>
-        <p className="text-justify max-w-fit flex-wrap">Student, Programmer, Mathmetician, Human. does Programming just for the fun of it. does math just because he can.</p>
-      </div>
-      <div className="my-4 text-center md:text-left">
-        <h1 className="text-2xl font-bold">Projects</h1>
-        <div className="gap-4 flex flex-col sm:flex-row">
-          {githubRepos.filter((v, i) => i < 3).map((v: Repo) => 
-            <div key={v.id} className="border-2 rounded p-2 w-64 h-48">
-              <h1 className=" font-bold">{v.name}</h1>
-              <p className="my-4">{v.description}</p>
-              <Link href={v.html_url} className="border rounded hover:bg-green-800 hover:text-white p-2">Learn More</Link>
-            </div>
-          )}
-        </div>
-      </div>
-      <div className="my-4 text-center md:text-left">
-        <h1 className="text-2xl font-bold">Non-Coding Projects</h1>
-        <div className="gap-4 flex flex-col sm:flex-row">
-          {NonCoding.filter((v, i) => i < 3).map((v) => 
-            <div key={v.title} className="border-2 rounded p-2 w-64 h-48">
-              <h1 className=" font-bold">{v.title}</h1>
-              <p className="my-4">{v.description}</p>
-              {/* <Link href={v.html_url} className="border rounded hover:bg-green-800 hover:text-white p-2">Learn More</Link> */}
-              {v.link? <Link href={v.link!} className="border rounded hover:bg-green-800 hover:text-white p-2">Learn More</Link> : <></>}
-            </div>
-          )}
-        </div>
-      </div>
-      <div className="my-4 flex flex-row gap-4">
+    <div>
+      <section className="w-full h-dvh text-white bg-black flex items-center justify-center">
         <div>
-          <h1 className="text-2xl font-bold">How to Contact me</h1>
-          <div>
-            <ul className="list-inside list-disc">
-              <li className="list-item">
-                <Link href={'mailto:gamernxt6@gmail.com'}>Email</Link>
-              </li>
-              <li>
-                Discord @aspectxlol
-              </li>
-              <li>
-                <Link href={'https://www.instagram.com/leui.hansen/'}>Instagram</Link>
-              </li>
-            </ul>
-          </div>
+        {circles.map((circle, index) => (
+          <div
+            key={index}
+            className="circle"
+            style={{
+              width: `${circle.size}px`,
+              height: `${circle.size}px`,
+              left: `${circle.left}px`,
+              top: `${circle.top}px`,
+              opacity: circle.opacity,
+              transition: `opacity ${circle.transitionTime}s`,
+            }}
+          />
+        ))}
         </div>
-        <div>
-          <h1 className="text-2xl font-bold">Find me on</h1>
-          <div>
-            <ul className="list-inside list-disc">
-              <li className="list-item">
-                <Link href={'https://github.com/aspectxlol'}>Github</Link>
-              </li>
-              <li>
-                <Link href={'https://www.instagram.com/leui.hansen/'}>Instagram</Link>
-              </li>
-              <li>
-                <Link href={'https://www.youtube.com/channel/UCujSEd_3GdpuWcF3dK4GOPg'}>Youtube</Link>
-              </li>
-            </ul>
-          </div>
+        <div className="h-full text-center items-center align-middle justify-center mt-16 md:mt-96">
+          <h1 className="text-5xl md:text-7xl lg:text-8xl xl:text-9xl font-bold">Louie</h1>
+          <p className="text-2xl md:text-4xl xl:text-7xl leading-6">Hi, im Louie! Student, Programmer, Mathmetician, Human</p>
+        
+          <div className='mt-16 lg:mt-32 xl:mt-64 items-center justify-center p-10 flex-row gap-5 hidden md:flex'>
+            <div>
+              <h2 className="text-2xl md:text-4xl xl:text-7xl font-bold">Interesting Stats</h2>
+              <div className='flex-row flex gap-4 justify-center items-center mt-5'>
+                <Stats data={{
+                  "Coding": 95,
+                  "Math": 99,
+                  "Charizzma": 150,
+                }}/>
+              </div>
+            </div>
+            <div>
+              <h2 className="text-2xl md:text-4xl xl:text-7xl font-bold">Things i do</h2>
+              <div className='flex-row flex gap-4 justify-center items-center mt-5'>
+                <ul className="list-disc">
+                  <li>Code</li>
+                  <li>Math</li>
+                  <li>Love</li>
+                </ul>
+              </div>
+            </div>
+          </div>        
         </div>
-      </div>
+      </section>
+      <section>
+
+      </section>
     </div>
   )
 }

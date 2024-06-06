@@ -31,7 +31,7 @@ export function Intro() {
       };
     };
     // Calculate target number of circles based on area
-    const density = 10; // Adjust this value to control circle density
+    const density = 20; // Adjust this value to control circle density
     const targetNumberOfCircles = Math.floor(
       (window.innerWidth * window.innerHeight) / (density * 1000)
     );
@@ -76,7 +76,7 @@ export function Intro() {
   return (
     <section className="w-full h-dvh text-white">
       <div>
-        {circles.map((circle, index) => (
+      {circles.map((circle, index) => (
         <div
           key={index}
           className="circle"
@@ -93,11 +93,11 @@ export function Intro() {
       </div>
       <div className="h-full text-center items-center align-middle justify-center mt-24">
         <h1 className="text-5xl md:text-7xl lg:text-8xl xl:text-9xl font-bold">CaL Blogs</h1>
-        <p className="text-2xl md:text-4xl xl:text-7xl">Calvin & Louie</p>
+        <p className="text-2xl md:text-4xl xl:text-7xl md:mt-5">Calvin & Louie</p>
 
         <div className='block mt-16 lg:mt-32 xl:mt-64 items-center p-10'>
           <h2 className="text-2xl md:text-4xl xl:text-7xl font-bold">About Us</h2>
-          <div className='flex-row flex gap-4 justify-center items-center'>
+          <div className='flex-row flex gap-4 justify-center items-center mt-2'>
             <Link
               href={'/about-us/louie'}
               className='rounded border-1 p-5 backdrop-blur-lg backdrop-brightness-125 cursor-pointer hover:backdrop-brightness-200 my-2'

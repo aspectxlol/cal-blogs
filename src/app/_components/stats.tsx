@@ -12,7 +12,7 @@ export default function Stats({
   
   
   return (
-    <div className="flex w-96 gap-4 flex-col p-2 border-2 rounded">
+    <div className="flex w-96 gap-2 flex-col p-2 border-2 rounded bg-white bg-opacity-10 backdrop-blur-xl">
       {/* <Progress value={50} onPointerEnterCapture={() => {}} onPointerLeaveCapture={() => {}} placeholder={""}/> */}
       {/* <ProgressBar now={60} label={`Math`} animated/> */}
       {Object.keys(data)
@@ -23,7 +23,7 @@ export default function Stats({
             label={`${v} ${data[v]}%`}
             variant={variants[Math.floor(Math.random() * variants.length)]}
             animated
-            
+            className='font-bold drop-shadow-xl '
           />
         )}
     </div>
