@@ -22,7 +22,7 @@ export default async function Post({ params }: Params) {
     <main>
       <Container>
         <Header />
-        <article className="mb-32">
+        <article className="mb-32 p-32">
           <PostHeader
             title={post.title}
             coverImage={post.coverImage}
