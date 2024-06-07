@@ -27,6 +27,7 @@ if this is your first time learning JavaScript, we reccomend you to use the Brow
 **In-Browser Development:**
 - Open your web browser and navigate to the developer console. This can usually be accessed by pressing F12 or right-clicking anywhere on the webpage and selecting "Inspect" or "Inspect Element."
 - Locate the developer console tab, which is typically where you can interact with the webpage's code.
+
 ![devtools](/assets/blog/javascript-basics/console.jpeg)
 _this is what a devtools console should look like_
 

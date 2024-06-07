@@ -18,9 +18,9 @@
 }
 
 .markdown ul {
-  @apply list-disc
+  @apply list-disc ml-8
 }
 
 .markdown ol {
-  @apply list-decimal
+  @apply list-decimal ml-8
 }
