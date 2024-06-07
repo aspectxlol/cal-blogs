@@ -1,6 +1,7 @@
 "use client"
 import Link from 'next/link';
 import React, { useState, useEffect, ReactNode } from 'react';
+import { density } from '../constants';
 
 interface Circle {
   size: number;
@@ -8,7 +9,7 @@ interface Circle {
   top: number;
   opacity: number;
   transitionTime: number;
-  intervalId?: NodeJS.Timeout; // Optional property for interval ID
+  intervalId?: NodeJS.Timeout; 
 }
 
 export function Intro() {
@@ -16,12 +17,11 @@ export function Intro() {
 
   useEffect(() => {
     const createCircle = (): Circle => {
-      const size = Math.random() * 3 + 1; // Range: 1px to 4px
+      const size = Math.random() * 3 + 1; 
       const left = Math.random() * (window.innerWidth - size * 2);
       const top = Math.random() * (window.innerHeight - size * 2);
       const opacity = Math.random() < 0.5 ? 0.1 : 1;
-      const transitionTime = Math.random() * 0.5 + 0.25; // Range: 0.25s to 075s
-
+      const transitionTime = Math.random() * 0.5 + 0.25; 
       return {
         size,
         left,
@@ -30,43 +30,22 @@ export function Intro() {
         transitionTime,
       };
     };
-    // Calculate target number of circles based on area
-    const density = 20; // Adjust this value to control circle density
     const targetNumberOfCircles = Math.floor(
       (window.innerWidth * window.innerHeight) / (density * 1000)
     );
 
     const newCircles = Array(targetNumberOfCircles).fill(null).map(createCircle);
     setCircles(newCircles);
-
-    // Window resize listener
     const handleResize = () => {
-      // Calculate target number of circles based on new window size
-      const density = 10; // Adjust this value to control circle density
       const targetNumberOfCircles = Math.floor(
         (window.innerWidth * window.innerHeight) / (density * 1000)
       );
-
-      // Create new circles or update existing ones if needed
       if (circles.length !== targetNumberOfCircles) {
         const newCircles = Array(targetNumberOfCircles).fill(null).map(createCircle);
         setCircles(newCircles);
-      } else {
-        // Update positions and opacity of existing circles (optional)
-        // You can uncomment this block to update circle properties on resize
-        // setCircles((prevCircles) =>
-        //   prevCircles.map((circle) => ({
-        //     ...circle,
-        //     left: Math.random() * (window.innerWidth - circle.size * 2),
-        //     top: Math.random() * (window.innerHeight - circle.size * 2),
-        //     opacity: Math.random() < 0.5 ? 0.1 : 1,
-        //   }))
-        // );
       }
     };
     window.addEventListener('resize', handleResize);
-
-    // Clean up intervals and resize listener when the component unmounts
     return () => {
       circles.forEach((circle) => clearInterval(circle.intervalId));
       window.removeEventListener('resize', handleResize);

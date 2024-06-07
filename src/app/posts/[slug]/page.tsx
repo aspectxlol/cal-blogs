@@ -1,13 +1,11 @@
 import { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { getAllPosts, getPostBySlug } from "@/lib/api";
-import { CMS_NAME } from "@/lib/constants";
 import markdownToHtml from "@/lib/markdownToHtml";
-import Alert from "@/app/_components/alert";
-import Container from "@/app/_components/container";
-import Header from "@/app/_components/header";
-import { PostBody } from "@/app/_components/post-body";
-import { PostHeader } from "@/app/_components/post-header";
+import Container from "@/app/_components/blogs/container";
+import Header from "@/app/_components/blogs/header";
+import { PostBody } from "@/app/_components/blog-things/post-body";
+import { PostHeader } from "@/app/_components/blog-things/post-header";
 
 export default async function Post({ params }: Params) {
   const post = getPostBySlug(params.slug);
@@ -22,7 +20,8 @@ export default async function Post({ params }: Params) {
     <main>
       <Container>
         <Header />
-        <article className="mb-32 p-32">
+        <article className="mb-32 p-4">
+          <h1 className="hidden sm:block">SM</h1>
           <PostHeader
             title={post.title}
             coverImage={post.coverImage}

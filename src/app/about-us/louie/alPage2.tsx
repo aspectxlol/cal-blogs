@@ -1,5 +1,5 @@
 "use server"
-import Stats from "@/app/_components/stats";
+import Stats from "@/app/_components/about-me/stats";
 import { Repo } from "@/interfaces/Repo";
 import Link from "next/link";
 

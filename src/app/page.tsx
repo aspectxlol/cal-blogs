@@ -1,7 +1,7 @@
-import Container from "@/app/_components/container";
-import { HeroPost } from "@/app/_components/hero-post";
+import Container from "@/app/_components/blogs/container";
+import { HeroPost } from "@/app/_components/blogs/hero-post";
 import { Intro } from "@/app/_components/intro";
-import { MoreStories } from "@/app/_components/more-stories";
+import { MoreStories } from "@/app/_components/blog-things/more-stories";
 import { getAllPosts } from "@/lib/api";
 
 
@@ -18,7 +18,7 @@ export default function Index() {
         <div className="background flex">
           <Intro />
         </div>      
-        <section className="mx-auto p-32 mt-5 h-dvh">
+        <section className="mx-auto p-2 sm:p-64 mt-5 h-dvh">
           <div className="max-w-screen-2xl">
             <HeroPost
               title={heroPost.title}

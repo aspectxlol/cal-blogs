@@ -13,8 +13,6 @@ export default function Stats({
   
   return (
     <div className="flex w-96 gap-2 flex-col p-2 border-2 rounded bg-white bg-opacity-10 backdrop-blur-xl">
-      {/* <Progress value={50} onPointerEnterCapture={() => {}} onPointerLeaveCapture={() => {}} placeholder={""}/> */}
-      {/* <ProgressBar now={60} label={`Math`} animated/> */}
       {Object.keys(data)
         .map((v) =>
           <ProgressBar

@@ -1,5 +1,5 @@
 import { getAllPosts } from "@/lib/api";
-import { PostPreview } from "../_components/post-preview";
+import { PostPreview } from "../_components/blog-things/post-preview";
 
 export default async function posts() {
   const allPosts = getAllPosts()

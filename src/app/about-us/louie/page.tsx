@@ -1,6 +1,7 @@
 "use client"
 
-import Stats from "@/app/_components/stats";
+import Stats from "@/app/_components/about-me/stats";
+import { density } from "@/app/constants";
 import { Repo } from "@/interfaces/Repo";
 import Link from "next/link";
 import { useState, useEffect } from "react";
@@ -75,7 +76,6 @@ export default function Page() {
       };
     };
     // Calculate target number of circles based on area
-    const density = 10; // Adjust this value to control circle density
     const targetNumberOfCircles = Math.floor(
       (window.innerWidth * window.innerHeight) / (density * 1000)
     );
@@ -86,7 +86,6 @@ export default function Page() {
     // Window resize listener
     const handleResize = () => {
       // Calculate target number of circles based on new window size
-      const density = 10; // Adjust this value to control circle density
       const targetNumberOfCircles = Math.floor(
         (window.innerWidth * window.innerHeight) / (density * 1000)
       );
@@ -108,7 +107,7 @@ export default function Page() {
 
   return (
     <div>
-      <section className="w-full h-dvh text-white bg-black flex items-center justify-center">
+      <section className="w-full h-dvh text-white bg-louie flex items-center justify-center">
         <div>
         {circles.map((circle, index) => (
           <div
@@ -125,7 +124,7 @@ export default function Page() {
           />
         ))}
         </div>
-        <div className="h-full text-center items-center align-middle justify-center mt-16 md:mt-96">
+        <div className="h-full text-center items-center align-middle justify-center mt-64 md:mt-96">
           <h1 className="text-5xl md:text-7xl lg:text-8xl xl:text-9xl font-bold">Louie</h1>
           <p className="text-2xl md:text-4xl xl:text-7xl leading-6">Hi, im Louie! Student, Programmer, Mathmetician, Human</p>
         
