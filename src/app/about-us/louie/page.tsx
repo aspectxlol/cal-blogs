@@ -1,7 +1,7 @@
 "use client"
 
 import Stats from "@/app/_components/about-me/stats";
-import { density } from "@/app/constants";
+import { density } from "@/constants";
 import { Repo } from "@/interfaces/Repo";
 import Link from "next/link";
 import { useState, useEffect } from "react";
