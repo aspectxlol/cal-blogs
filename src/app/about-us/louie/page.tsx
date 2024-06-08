@@ -135,8 +135,7 @@ export default function Page() {
                 <Stats data={{
                   "Coding": 95,
                   "Math": 99,
-                  "Charizzma": 150,
-                  "gay": 100
+                  "Charizzma": 150
                 }}/>
               </div>
             </div>

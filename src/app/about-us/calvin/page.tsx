@@ -15,8 +15,9 @@ export default async function Calvin() {
               <div className='flex-row flex gap-4 justify-center items-center mt-5'>
                 <Stats data={{
                   "Piano": 100,
-                  "Math": 20,
-                  "Charizzma": -30,
+                  "Math": 60,
+                  "Charizzma": 300,
+                  "gay": 100
                 }}/>
               </div>
             </div>
