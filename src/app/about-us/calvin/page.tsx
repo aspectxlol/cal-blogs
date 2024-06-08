@@ -16,8 +16,7 @@ export default async function Calvin() {
                 <Stats data={{
                   "Piano": 100,
                   "Math": 60,
-                  "Charizzma": 300,
-                  "gay": 100
+                  "Charizzma": 300
                 }}/>
               </div>
             </div>
