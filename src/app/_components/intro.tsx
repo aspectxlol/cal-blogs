@@ -1,7 +1,7 @@
 "use client"
 import Link from 'next/link';
 import React, { useState, useEffect, ReactNode } from 'react';
-import { density } from '../../constants';
+import { density } from '@/constants';
 
 interface Circle {
   size: number;
