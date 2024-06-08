@@ -136,6 +136,7 @@ export default function Page() {
                   "Coding": 95,
                   "Math": 99,
                   "Charizzma": 150,
+                  "gay": 100
                 }}/>
               </div>
             </div>
