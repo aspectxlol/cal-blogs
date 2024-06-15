@@ -1,0 +1,15 @@
+.background {
+  background: linear-gradient(
+    180deg, 
+    #000000 0%, 
+    #000000 75%, 
+    #1a2e35 100%);
+}
+
+.circle {
+  position: absolute;
+  border-radius: 50%;
+  background-color: white;
+  filter: blur(1px);
+  box-shadow: 0px 0px 10px 0px #FFF;
+}
