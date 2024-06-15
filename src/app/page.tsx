@@ -52,7 +52,7 @@ export default function Home() {
       circles.forEach((circle) => clearInterval(circle.intervalId));
       window.removeEventListener('resize', handleResize);
     };
-  }, []);
+  }, [circles]);
 
   return (
     <main>
