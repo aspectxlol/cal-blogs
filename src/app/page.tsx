@@ -129,7 +129,7 @@ export default function Home() {
         </div>
       </section>
       <section className="h-dvh w-full p-5" ref={sectRef2}>
-        <h1 className={`text-5xl md:text-7xl font-bold text-center mt-4 md:mt-32 mb-8 ${RefInView ? "-translate-y-48 opacity-0" : "translate-y-0 opacity-100"} transition-all duration-500`}>Our Posts</h1>
+        <h1 className={`text-5xl md:text-7xl font-bold text-center mt-4 md:mt-32 mb-8 ${Ref2InView ? "translate-y-0 opacity-100" : "-translate-y-48 opacity-0"} transition-all duration-500`}>Our Posts</h1>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
           {AllPosts?.map((post) => <PostPreview post={post} key={post.slug} />)}
         </div>
