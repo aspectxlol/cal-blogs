@@ -109,13 +109,13 @@ export default function Home() {
             }}
           />
         ))}        
-        <h1 className="font-bold text-3xl md:text-7xl">Calvin & Louie</h1>
+        <h1 className="font-bold text-5xl md:text-7xl">Calvin & Louie</h1>
         <div className='absolute bottom-16 left-0 right-0 mx-auto items-center justify-center flex'>
           <button className='rounded-full p-5 border-white border-4 hover:mb-4 hover:p-7 transition-all' onClick={() => { sectRef.current?.scrollIntoView({ behavior: "smooth" }) }}>About Us</button>
         </div>
       </section>
       <section className="h-dvh w-full p-5" ref={sectRef}>
-        <h1 className={`text-9xl text-center font-bold mt-52 block ${RefInView ? "translate-x-0 opacity-100" : "-translate-x-48 opacity-0"} transition-all duration-500`}>About Us</h1>
+        <h1 className={`text-5xl md:text-7xl text-center font-bold mt-52 block ${RefInView ? "translate-x-0 opacity-100" : "-translate-x-48 opacity-0"} transition-all duration-500`}>About Us</h1>
         <div className="flex flex-row justify-center text-center items-center my-14 gap-5">
           <Link className={`rounded-lg shadow-lg p-12 border-2 hover:shadow-xl hover:-translate-y-2 transition-all ${RefInView ? "translate-x-0 opacity-100" : "-translate-x-48 opacity-0"} transition-all duration-500 delay-75`} href={"/about-us/louie"}>
             <h1 className="font-bold text-2xl">Louie</h1>
@@ -129,8 +129,8 @@ export default function Home() {
         </div>
       </section>
       <section className="h-dvh w-full p-5" ref={sectRef2}>
-        <h1 className={`text-9xl font-bold text-center mt-32 mb-8 ${RefInView ? "-translate-y-48 opacity-0" : "translate-y-0 opacity-100"} transition-all duration-500`}>Our Posts</h1>
-        <div className="grid grid-cols-2 gap-5">
+        <h1 className={`text-5xl md:text-7xl font-bold text-center mt-4 md:mt-32 mb-8 ${RefInView ? "-translate-y-48 opacity-0" : "translate-y-0 opacity-100"} transition-all duration-500`}>Our Posts</h1>
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
           {AllPosts?.map((post) => <PostPreview post={post} key={post.slug} />)}
         </div>
       </section>

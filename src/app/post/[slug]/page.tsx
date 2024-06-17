@@ -22,7 +22,7 @@ export default async function Post({ params }: Params) {
         <h1 className="text-5xl md:text-7xl lg:text-8xl font-bold tracking-tighter leading-tight md:leading-none mb-12 text-center">
         {post.title}
         </h1>
-        <div className="hidden md:block md:mb-12">
+        <div className="">
           <div className="hidden md:block mb-6">
             <div className="flex flex-row items-center m-2"> 
               <Image
@@ -54,10 +54,16 @@ export default async function Post({ params }: Params) {
                     height={256}
                     className="rounded-full w-12 h-12 mr-2"
                   />
-                  <h1 className="text-2xl font-bold ml-2">{post.author.name}</h1>
+                <h1 className="text-2xl font-bold ml-2">{post.author.name}</h1>
+                    <time
+                      dateTime={post.date}
+                      className="ml-6 items-center"
+                    >
+                    {format(parseISO(post.date), "LLLL d, yyyy")}
+                  </time>
                 </div>
               </div>
-              <div className="mb-6 text-lg">
+              <div className="mb-6 text-lg hidden md:block">
                 <time
                   dateTime={post.date}
                   className="ml-6 items-center"
