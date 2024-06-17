@@ -1,10 +1,22 @@
 "use client"
 
-import LouieStyles from '@/styles/Louie.module.css'
-import { createRef } from 'react'
+// import LouieStyles from '@/styles/Louie.module.css'
+import { createRef, useEffect, useState } from 'react'
 
 export default function Louie() {
   const sectRef = createRef<HTMLElement>()
+  const [InView, setInView] = useState(false)
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        setInView(entry.isIntersecting)
+      },
+      { rootMargin: "-300px" }
+    );
+    observer.observe(sectRef.current!)
+    return () => observer.disconnect()
+  }, [sectRef]);
 
   return (
     <main>
@@ -19,7 +31,8 @@ export default function Louie() {
       <section className="h-dvh w-full" ref={sectRef}>
         <div className="flex flex-col h-full justify-center text-center">
           <div className="flex flex-row justify-center">
-            <h1 className='text-9xl font-extrabold'>The Worlds best <span className='bg-red-800 text-white'>Programmer</span></h1>
+            {/* {InView? <h1>In view</h1> : <h1>not In view</h1>} */}
+            <h1 className={`text-9xl font-extrabold ${InView ? "translate-x-0 opacity-100" : "-translate-x-48 opacity-0"} transition-all duration-500`}>The Worlds best<span className='bg-red-800 text-white duration-1000 ml-4'>Programmer</span></h1>
           </div>
         </div>
       </section>
