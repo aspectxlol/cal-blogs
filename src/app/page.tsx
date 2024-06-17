@@ -4,6 +4,8 @@ import { density } from "@/constants";
 import { useState, useEffect, createRef } from "react";
 import SkyCSS from '@/styles/sky.module.css'
 import Link from "next/link";
+import { Post } from "@/interfaces/Post";
+import PostPreview from "@/components/PostPreview";;
 
 interface Circle {
   size: number;
@@ -18,12 +20,32 @@ interface Circle {
 export default function Home() {
   const [circles, setCircles] = useState<Circle[]>([]);
   const sectRef = createRef<HTMLElement>()
-  const [InView, setInView] = useState(false)
+  const sectRef2 = createRef<HTMLElement>()
+  const [RefInView, setRefInView] = useState(false)
+  const [Ref2InView, setRef2InView] = useState(false)
+  const [AllPosts, setAllPosts] = useState<Post[]>()
+
+  useEffect(() => {
+    const data = fetch('/api')
+      .then((data) => data.json())
+      .then(data => setAllPosts(data))
+  }, [])
 
   useEffect(() => {
     const observer = new IntersectionObserver(
       ([entry]) => {
-        setInView(entry.isIntersecting)
+        setRef2InView(entry.isIntersecting)
+      },
+      { rootMargin: "-300px" }
+    );
+    observer.observe(sectRef2.current!)
+    return () => observer.disconnect()
+  }, [sectRef2]);
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        setRefInView(entry.isIntersecting)
       },
       { rootMargin: "-300px" }
     );
@@ -89,18 +111,27 @@ export default function Home() {
         ))}        
         <h1 className="font-bold text-3xl md:text-7xl">Calvin & Louie</h1>
         <div className='absolute bottom-16 left-0 right-0 mx-auto items-center justify-center flex'>
-          <button className='rounded-full p-5 border-white border-4 hover:mb-4 hover:p-7 transition-all' onClick={() => { sectRef.current?.scrollIntoView({ behavior: "smooth" }) }}>Look At More!</button>
+          <button className='rounded-full p-5 border-white border-4 hover:mb-4 hover:p-7 transition-all' onClick={() => { sectRef.current?.scrollIntoView({ behavior: "smooth" }) }}>About Us</button>
         </div>
       </section>
       <section className="h-dvh w-full p-5" ref={sectRef}>
-        <h1 className={`text-9xl text-center font-bold mt-52 block ${InView ? "translate-x-0 opacity-100" : "-translate-x-48 opacity-0"} transition-all duration-500`}>About Us</h1>
+        <h1 className={`text-9xl text-center font-bold mt-52 block ${RefInView ? "translate-x-0 opacity-100" : "-translate-x-48 opacity-0"} transition-all duration-500`}>About Us</h1>
         <div className="flex flex-row justify-center text-center items-center my-14 gap-5">
-          <Link className={`rounded-lg shadow-lg p-12 border-2 hover:shadow-xl transition-all ${InView ? "translate-x-0 opacity-100" : "-translate-x-48 opacity-0"} transition-all duration-500 delay-75`} href={"/about-us/louie"}>
+          <Link className={`rounded-lg shadow-lg p-12 border-2 hover:shadow-xl transition-all ${RefInView ? "translate-x-0 opacity-100" : "-translate-x-48 opacity-0"} transition-all duration-500 delay-75`} href={"/about-us/louie"}>
             <h1 className="font-bold text-2xl">Louie</h1>
           </Link>
-          <Link className={`rounded-lg shadow-lg p-12 border-2 hover:shadow-xl transition-all ${InView ? "translate-x-0 opacity-100" : "-translate-x-48 opacity-0"} transition-all duration-500 delay-150`} href={"/about-us/calvin"}>
+          <Link className={`rounded-lg shadow-lg p-12 border-2 hover:shadow-xl transition-all ${RefInView ? "translate-x-0 opacity-100" : "-translate-x-48 opacity-0"} transition-all duration-500 delay-150`} href={"/about-us/calvin"}>
             <h1 className="font-bold text-2xl">Calvin</h1>
           </Link>
+        </div>
+        <div className={`relative left-0 right-0 mx-auto items-center justify-center flex ${RefInView ? "translate-x-0 opacity-100" : "-translate-x-48 opacity-0"} transition-all duration-500 delay-500`}>
+          <button className='rounded-full p-5 border-black border-4 hover:mb-4 hover:p-7 transition-all' onClick={() => { sectRef2.current?.scrollIntoView({ behavior: "smooth" }) }}>Posts From Us</button>
+        </div>
+      </section>
+      <section className="h-dvh w-full p-5" ref={sectRef2}>
+        <h1 className={`text-9xl font-bold text-center mt-32 mb-8 ${RefInView ? "-translate-y-48 opacity-0" : "translate-y-0 opacity-100"} transition-all duration-500`}>Our Posts</h1>
+        <div className="grid grid-cols-2 gap-5">
+          {AllPosts?.map((post) => <PostPreview post={post} key={post.slug} />)}
         </div>
       </section>
     </main>

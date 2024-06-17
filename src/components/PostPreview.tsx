@@ -7,7 +7,7 @@ export default function PostPreview(
   { post } : { post: Post }
 ) {
   return (
-    <Link className="shadow-lg border-4 rounded" href={`/post/${post.slug}`}>
+    <Link className="shadow-lg rounded hover:shadow-xl hover:-translate-y-4 transition-all" href={`/post/${post.slug}`}>
       <Image
         src={post.coverImage}
         alt={post.title}
