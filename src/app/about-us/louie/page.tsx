@@ -30,9 +30,10 @@ export default function Louie() {
       </section>
       <section className="h-dvh w-full" ref={sectRef}>
         <div className="flex flex-col h-full justify-center text-center">
-          <div className="flex flex-row justify-center">
+          <div className="flex flex-col justify-center">
             {/* {InView? <h1>In view</h1> : <h1>not In view</h1>} */}
             <h1 className={`text-9xl font-extrabold ${InView ? "translate-x-0 opacity-100" : "-translate-x-48 opacity-0"} transition-all duration-500`}>The Worlds best<span className='bg-red-800 text-white duration-1000 ml-4'>Programmer</span></h1>
+            <p className={`mt-4 text-4xl font-bold ${InView ? "translate-x-0 opacity-100" : "-translate-x-48 opacity-0"} transition-all duration-500 delay-500`}>until proven otherwise<span className='text-red-700'>*</span></p>
           </div>
         </div>
       </section>
