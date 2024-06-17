@@ -117,10 +117,10 @@ export default function Home() {
       <section className="h-dvh w-full p-5" ref={sectRef}>
         <h1 className={`text-9xl text-center font-bold mt-52 block ${RefInView ? "translate-x-0 opacity-100" : "-translate-x-48 opacity-0"} transition-all duration-500`}>About Us</h1>
         <div className="flex flex-row justify-center text-center items-center my-14 gap-5">
-          <Link className={`rounded-lg shadow-lg p-12 border-2 hover:shadow-xl transition-all ${RefInView ? "translate-x-0 opacity-100" : "-translate-x-48 opacity-0"} transition-all duration-500 delay-75`} href={"/about-us/louie"}>
+          <Link className={`rounded-lg shadow-lg p-12 border-2 hover:shadow-xl hover:-translate-y-2 transition-all ${RefInView ? "translate-x-0 opacity-100" : "-translate-x-48 opacity-0"} transition-all duration-500 delay-75`} href={"/about-us/louie"}>
             <h1 className="font-bold text-2xl">Louie</h1>
           </Link>
-          <Link className={`rounded-lg shadow-lg p-12 border-2 hover:shadow-xl transition-all ${RefInView ? "translate-x-0 opacity-100" : "-translate-x-48 opacity-0"} transition-all duration-500 delay-150`} href={"/about-us/calvin"}>
+          <Link className={`rounded-lg shadow-lg p-12 border-2 hover:shadow-xl hover:-translate-y-2 transition-all ${RefInView ? "translate-x-0 opacity-100" : "-translate-x-48 opacity-0"} transition-all duration-500 delay-150`} href={"/about-us/calvin"}>
             <h1 className="font-bold text-2xl">Calvin</h1>
           </Link>
         </div>
