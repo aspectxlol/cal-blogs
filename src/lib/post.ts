@@ -1,9 +1,8 @@
-import { Post } from "@/interfaces/post";
+import { postsDirectory } from "@/constants";
+import { Post } from "@/interfaces/Post";
 import fs from "fs";
 import matter from "gray-matter";
 import { join } from "path";
-
-const postsDirectory = join(process.cwd(), "_posts");
 
 export function getPostSlugs() {
   return fs.readdirSync(postsDirectory);
@@ -35,3 +34,4 @@ export function getAllPosts(): Post[] {
     .sort((post1, post2) => (post1.date > post2.date ? -1 : 1));
   return posts;
 }
+ 

@@ -1,0 +1,12 @@
+.text-animation {
+  animation: text-animation 3s  alternate ease-in-out;
+}
+
+@keyframes text-animation {
+  0% {
+    transform: translateY(0);
+  }
+  100% {
+    transform: translateY(-100px);
+  }
+}

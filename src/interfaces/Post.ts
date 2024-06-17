@@ -1,5 +1,3 @@
-import { type Author } from "./author";
-
 export type Post = {
   slug: string;
   title: string;
@@ -12,4 +10,9 @@ export type Post = {
   };
   content: string;
   preview?: boolean;
+};
+
+export type Author = {
+  name: string;
+  picture: string;
 };

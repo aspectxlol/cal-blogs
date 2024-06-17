@@ -12,7 +12,7 @@ ogImage:
 
 JavaScript (JS) is a powerful and versatile programming language that adds interactivity and dynamism to web pages. It's one of the three core languages of web development, alongside HTML and CSS. This guide will walk you through the fundamentals of getting started with JavaScript.
 
-**Starters**
+# **Starters**
 
 While not essential, having a basic understanding of HTML and CSS will prove beneficial as you learn JS. Familiarity with these languages will help you grasp how JS interacts with web page structure and styling.
 
@@ -24,14 +24,14 @@ There are two approaches to running JavaScript code:
 
 if this is your first time learning JavaScript, we reccomend you to use the Browser Approach
 
-**In-Browser Development:**
+## **In-Browser Development:**
 - Open your web browser and navigate to the developer console. This can usually be accessed by pressing F12 or right-clicking anywhere on the webpage and selecting "Inspect" or "Inspect Element."
 - Locate the developer console tab, which is typically where you can interact with the webpage's code.
 
 ![devtools](/assets/blog/javascript-basics/console.jpeg)
 _this is what a devtools console should look like_
 
-**Your First JavaScript Program: Hello World!**
+# **Your First JavaScript Program: Hello World!**
 
 Let's write our first JavaScript program to display the classic "Hello World!" message.
 

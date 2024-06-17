@@ -55,7 +55,7 @@ Tbh, all the shotties in this game are good, but this is a favorite for everyone
 It's really broken. Seriously. The HVK can 3 shot with Large Caliber ammo, and it does so very effectively. Its imo the best gun in the game right now, and it will be that way for a really long time. The downside though is its puny mag size, with only 28 bullets in each mag, so you'll have to hit your shots, or you're cooked.
 
 ## 2. HVK-30
-![HVK-30](/assets/best-guns-in-codm/HVK-30.jpg)
+![HVK-30](/assets/blog/best-guns-in-codm/HVK-30.jpg)
 
 It's really broken. Seriously. The HVK can 3 shot with Large Caliber ammo, and it does so very effectively. Its imo the best gun in the game right now, and it will be that way for a really long time. The downside though is its puny mag size, with only 28 bullets in each mag, so you'll have to hit your shots, or you're cooked.
 

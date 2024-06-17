@@ -1,12 +1,9 @@
 .background {
-  position: absolute;
-  /* height: 100vh; */
-  /* margin: 0; */
   background: linear-gradient(
     180deg, 
-    #1A1E35 0%, 
-    #372C4B 50%, 
-    #74404F 100%);
+    #000000 0%, 
+    #000000 75%, 
+    #1a2e35 100%);
 }
 
 .circle {
