@@ -21,12 +21,12 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={inter.className}>
-      <div className="fixed text-blue-50 font-bold text-9xl drop-shadow-[0_1.2px_1.2px_rgba(0,0,0,0.8)]">
+      {/* <div className="fixed text-blue-50 font-bold text-9xl drop-shadow-[0_1.2px_1.2px_rgba(0,0,0,0.8)]">
         <h1 className="hidden sm:block">sm</h1>
         <h1 className="hidden md:block">md</h1>
         <h1 className="hidden lg:block">lg</h1>
         <h1 className="hidden xl:block">xl</h1>
-      </div>
+      </div> */}
         {children}
       </body>
     </html>
