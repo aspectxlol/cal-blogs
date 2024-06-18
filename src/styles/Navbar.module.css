@@ -1,0 +1,6 @@
+.link {
+  color: #000000;
+  mix-blend-mode: difference;
+  /* -webkit-filter: invert(100%); */
+  /* filter: invert(100%); */
+}
